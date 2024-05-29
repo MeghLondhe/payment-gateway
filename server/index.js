@@ -15,7 +15,7 @@ app.use(express.urlencoded({
     extended: false
 }));
 app.use(cors({
-    origin: 'https://payment-gateway-server-nine.vercel.app', // Allow only this origin
+    origin: 'https://www.acquisitionportal.com', // Allow only this origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Specify allowed methods
     credentials: true // Include this if your request includes credentials like cookies or HTTP authentication
   }));
