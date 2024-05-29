@@ -15,7 +15,7 @@ app.use(express.urlencoded({
     extended: false
 }));
 app.use(cors({
-    origin: 'https://www.acquisitionportal.com/order', // Allow only this origin
+    origin: 'https://payment-gateway-server-nine.vercel.app', // Allow only this origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Specify allowed methods
     credentials: true // Include this if your request includes credentials like cookies or HTTP authentication
   }));
@@ -45,7 +45,7 @@ app.post("/order", async (req, res) => {
             merchantUserId: req.body.MUID,
             name: req.body.name,
             amount: req.body.amount * 100,
-            redirectUrl: `https://aquisitionportal.com/order/?id=${merchantTransactionId}`,
+            redirectUrl: `https://payment-gateway-server-nine.vercel.app/order/?id=${merchantTransactionId}`,
             redirectMode: 'POST',
             mobileNumber: req.body.number,
             paymentInstrument: {
@@ -118,10 +118,10 @@ app.post("/status", async (req, res) => {
     // CHECK PAYMENT TATUS
     axios.request(options).then(async (response) => {
             if (response.data.success === true) {
-                const url = `https://acquisitionportal.com/success`
+                const url = `https://payment-gateway-server-nine.vercel.app/success`
                 return res.redirect(url)
             } else {
-                const url = `https://acquisitionportal.com/failure`
+                const url = `https://payment-gateway-server-nine.vercel.app/failure`
                 return res.redirect(url)
             }
         })
