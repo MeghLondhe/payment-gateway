@@ -14,7 +14,11 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: false
 }));
-app.use(cors());
+app.use(cors({
+    origin: 'https://www.acquisitionportal.com/order', // Allow only this origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Specify allowed methods
+    credentials: true // Include this if your request includes credentials like cookies or HTTP authentication
+  }));
 app.use(bodyParser.urlencoded({
     extended: false
 }));

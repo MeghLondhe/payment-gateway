@@ -16,7 +16,7 @@ const App = () => {
     const handlePayment = async (e) => {
         e.preventDefault();
 
-        let res = await axios.post('https://acquisitionportal.com/order', data).then(res => {
+        let res = await axios.post('https://payment-gateway-server-nine.vercel.app/order', {...data}).then(res => {
 
             console.log(res)
             if (res.data && res.data.data.instrumentResponse.redirectInfo.url) {
